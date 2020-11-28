@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap");
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            color: rgba(0, 0, 0, 0.8);
+            font-family: "Montserrat", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            background: #D8AA96;
+
+        }
+
+        .main {
+            display: flex;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+          
+        }
+
+        .left-container {
+            background: #807182;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            padding-right: 15rem;
+          
+        }
+
+
+        .left-container .puppy {
+            bottom: -5px;
+            position: absolute;
+            text-align: center;
+        }
+
+        .left-container .puppy:before {
+            background: #807182;
+            content: "";
+            height: 100%;
+            left: 0;
+            opacity: .4;
+            position: absolute;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .left-container img {
+            filter: sepia(100%);
+            width: 100%;
+
+        }
+
+        .right-container {
+            background: #f9c7c2;
+            padding: 2rem;
+            width: 100%;
+        }
+
+
+        .right-container input {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            line-height: 38px;
+            padding-left: 5px;
+            color: rgba(0, 0, 0, 0.8);
+            margin-top:12px;
+           font-size: 16px;
+           font-weight: 600;
+            
+        }
+
+
+        .right-container label {
+            color: rgba(0, 0, 0, 0.8);
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+
+
+
+        .pets-name label,
+        .pets-breed label {
+            display: block;
+           
+            margin-left: 60px;
+        }
+
+        .btn {
+            padding: 13px 35px;
+            margin: 15px;
+            margin-left: 55px;
+            background-color: #807182;
+            border: none;
+            outline: none;
+            border-radius: 3px;
+            font-weight: 600;
+            color: rgba(0, 0, 0, 0.8);
+        }
+        .pets-breed{
+            border: none;
+            outline: none;
+            box-sizing: none;
+
+        }
+        #select1{
+            font-size: 17px;
+            padding: 10px 25px;
+            text-align: center;
+            margin-left: 65px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class='main'>
+        <div class='left-container'>
+            <div class='puppy'>
+                <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-542207-jpeg.png'>
+            </div>
+        </div>
+
+        <div class='right-container'>
+            <h2>Human to Dog age Converter</h2>
+            <div style="margin-left:50px; margin-top: 20px;">
+                <div>
+                    <div class='pets-name'>
+                        <label style="margin-left: 70px;">Human Age</label>
+                        <input id='input1' type='text'>
+                    </div>
+
+                </div>
+                <div>
+                    <div class='pets-breed'>
+                        <label >Choose Month </label>
+                        <select name="" id="select1" class="btn">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                      
+                    </div>
+
+                    
+                   
+
+                    <div class='pets-breed'>
+                        <label>Dog Age In YMD</label>
+                        <input id='year1' type='text'  readonly>
+                    </div>
+
+                        <button class="btn" onclick="myfun()">Check</button>
+                   
+                </div>
+            </div>
+        </div>
+
+</body>
+<script>
+     function myfun() {
+        var y = 2;
+        var x = parseFloat(document.getElementById("input1").value);
+        var a= Number((document.getElementById("select1").value));
+        x=x+a/12;
+        console.log(typeof x);
+        console.log(x);
+
+        if (x >= 21) {
+            x = x - 21;
+            let r = x / 4;
+            r = r + 2;
+            console.log(r);
+            myfun1(r);
+        }
+
+        else if (x < 21) {
+            x = x / 10.5;
+            myfun1(x);
+
+        }
+    }
+
+    function myfun1(x) {
+        let y = (parseInt(x))
+        console.log(y)
+        let m = x - y
+        m = m * 12
+        let z = (parseInt(m))
+        console.log(z)
+        let d = m - z
+        d = d * 30;
+        d = Math.ceil(d);
+        document.getElementById("year1").value =` ${y} year ${z} month ${d} days`;
+       
+    }
+</script>
+
+</html>
