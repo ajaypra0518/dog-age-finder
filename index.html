@@ -124,6 +124,16 @@
             text-align: center;
             margin-left: 65px;
         }
+         /* for making input type only number */
+         input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+         /* for mozzila */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
 
     </style>
 </head>
@@ -143,7 +153,7 @@
                 <div>
                     <div class='pets-name'>
                         <label style="margin-left: 70px;">Human Age</label>
-                        <input id='input1' type='text'>
+                        <input id='input1' type='number' onclick="myclear()">
                     </div>
 
                 </div>
@@ -220,6 +230,12 @@
         document.getElementById("year1").value =` ${y} year ${z} month ${d} days`;
        
     }
+
+    function myclear() {
+            document.getElementById("input1").value = "";
+            document.getElementById("year1").value = "";
+        }
+
 </script>
 
 </html>
